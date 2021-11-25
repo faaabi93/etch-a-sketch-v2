@@ -19,7 +19,7 @@ function resizeBtn() {
     }
     createDivs(newSize);
     const cells = document.querySelectorAll(".item");
-    cells.forEach(cell => cell.addEventListener("mouseover", addColor))
+    console.log(currentMode === "color")
 };
 
 function addContainerTemplate(n) {
@@ -43,8 +43,10 @@ function colorBtn() {
         clear();
         cell.removeEventListener("mouseover", addBlack);
         cell.addEventListener("mouseover", addColor);  
-        currentMode = "color";  
     });
+    currentMode = "color";  
+    setButtonActive(btnColor)
+    console.log(currentMode);
 };
 
 function blackBtn() {
@@ -53,8 +55,10 @@ function blackBtn() {
         clear();
         cell.removeEventListener("mouseover", addColor);
         cell.addEventListener("mouseover", addBlack);
-        currentMode = "black";
     });
+    currentMode = "black";
+    setButtonActive(btnBlack)
+    console.log(currentMode);
 };
 
 function clear() {
@@ -70,6 +74,16 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 };
 
+function setButtonActive(btn) {
+    if(btn === btnColor) {
+        btnColor.classList.add("btn-active");
+        btnBlack.classList.remove("btn-active");
+    } else if (btn === btnBlack) {
+        btnColor.classList.remove("btn-active");
+        btnBlack.classList.add("btn-active");
+    }
+}
+
 function createDivs(n) {
     for(let i = 0; i < n*n; i++) {
         let newDiv = document.createElement("div")
@@ -78,7 +92,12 @@ function createDivs(n) {
     };
     const cells = document.querySelectorAll(".item");
     addContainerTemplate(n);
-    cells.forEach(cell => cell.addEventListener("mouseover", addColor));
+    if(currentMode === "color") {
+        cells.forEach(cell => cell.addEventListener("mouseover", addColor))
+    } else {
+        cells.forEach(cell => cell.addEventListener("mouseover", addBlack))
+    }
+    setButtonActive(btnColor);
 };
 
 

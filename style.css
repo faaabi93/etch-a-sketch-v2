@@ -4,13 +4,14 @@ body {
     justify-items: center;
 }
 
-.active {
-    background-color: green;
-}
 
 .btns {
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.btn-active {
+    background-color: rgb(187, 121, 0);
 }
 
 .btn {
