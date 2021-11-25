@@ -30,8 +30,6 @@ body {
 }
 
 .container  {
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
     display: inline-grid;
     width: 600px;
     height: 600px;

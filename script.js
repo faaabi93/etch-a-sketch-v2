@@ -12,6 +12,8 @@ btnResize.addEventListener("click", resizeBtn);
 
 function resizeBtn() {
     let newSize = window.prompt("Test");
+    if(isNaN(newSize) || newSize > 20 || newSize < 3) return;
+
     while(container.firstChild) {
         container.removeChild(container.firstChild);
     }
